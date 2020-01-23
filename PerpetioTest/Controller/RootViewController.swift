@@ -32,7 +32,6 @@ extension RootViewController: UITableViewDelegate {
             case .failure(let error): DispatchQueue.main.async { presentAlert(text: error, in: self) }
             case .success(let data):
                 self.cityToPass = City(data: data)
-                print(self.cityToPass?.dates)
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "showWeather", sender: self)
                 }

@@ -11,7 +11,7 @@ import UIKit
 
 struct City {
     let name: String
-    var dates: [[String]] = []
+    var dates: [MonthData] = []
     var picker: [[String]] = []
     
     init(data: String) {
@@ -22,9 +22,16 @@ struct City {
         for i in 7..<stringsArray.count {
             var dateEntry = stringsArray[i].components(separatedBy: " ")
             dateEntry = dateEntry.filter { $0 != "" }
-            dates.append(dateEntry)
-            years.append(dateEntry[0])
-            months.append(Int(dateEntry[1])!)
+            let monthData = MonthData(year: dateEntry[0],
+                                      month: dateEntry[1],
+                                      tmax: dateEntry[2],
+                                      tmin: dateEntry[3],
+                                      adDays: dateEntry[4],
+                                      rainMM: dateEntry[5],
+                                      sunHours: dateEntry[6])
+            dates.append(monthData)
+            years.append(monthData.year)
+            months.append(Int(monthData.month)!)
            
         }
         let sortedYears = Array(Set(years)).sorted { $1 < $0 }
@@ -32,4 +39,14 @@ struct City {
         picker.append(sortedYears)
         picker.append(sortedMonths.map { String($0) })
     }
+}
+
+struct MonthData {
+    let year: String
+    let month: String
+    let tmax: String
+    let tmin: String
+    let adDays: String
+    let rainMM: String
+    let sunHours: String
 }

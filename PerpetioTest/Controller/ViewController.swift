@@ -41,7 +41,11 @@ extension ViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("darova")
+        guard let city = city else { return }
+        let year = pickerData[0][pickerView.selectedRow(inComponent: 0)]
+        let month = pickerData[1][pickerView.selectedRow(inComponent: 1)]
+        let result = city.dates.filter { $0.year == year && $0.month == month }
+        print(year, month, result)
     }
 }
 
