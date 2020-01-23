@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var city: City?
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.picker.delegate = self
         self.picker.dataSource = self
         guard let city = city else { return }
