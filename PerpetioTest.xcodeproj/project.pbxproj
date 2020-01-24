@@ -20,6 +20,7 @@
 		10BC1FE423D9FB1D00242C28 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BC1FE223D9FB1D00242C28 /* CityTableViewCell.xib */; };
 		10BC1FE623DA04D500242C28 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BC1FE523DA04D500242C28 /* Utils.swift */; };
 		10BC1FE823DA051500242C28 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BC1FE723DA051400242C28 /* City.swift */; };
+		10BC1FEA23DB1E2200242C28 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BC1FE923DB1E2200242C28 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		10BC1FE223D9FB1D00242C28 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		10BC1FE523DA04D500242C28 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		10BC1FE723DA051400242C28 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		10BC1FE923DB1E2200242C28 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				10BC1FC323D9E90C00242C28 /* AppDelegate.swift */,
 				10BC1FC523D9E90C00242C28 /* SceneDelegate.swift */,
+				10BC1FEB23DB1E2700242C28 /* Extensions */,
 				10BC1FDE23D9EB0C00242C28 /* Model */,
 				10BC1FDB23D9EAED00242C28 /* Controller */,
 				10BC1FDA23D9EAE200242C28 /* View */,
@@ -110,6 +113,14 @@
 				10BC1FE723DA051400242C28 /* City.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		10BC1FEB23DB1E2700242C28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10BC1FE923DB1E2200242C28 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				10BC1FE823DA051500242C28 /* City.swift in Sources */,
 				10BC1FDD23D9EB0600242C28 /* Networking.swift in Sources */,
 				10BC1FE023D9EF6000242C28 /* RootViewController.swift in Sources */,
+				10BC1FEA23DB1E2200242C28 /* Extensions.swift in Sources */,
 				10BC1FCE23D9E90C00242C28 /* PerpetioTest.xcdatamodeld in Sources */,
 				10BC1FC423D9E90C00242C28 /* AppDelegate.swift in Sources */,
 				10BC1FC623D9E90C00242C28 /* SceneDelegate.swift in Sources */,
