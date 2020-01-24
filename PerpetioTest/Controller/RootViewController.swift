@@ -57,7 +57,7 @@ extension RootViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityTableViewCell
-        cell.textLabel?.text = cities[indexPath.row]
+        cell.cityLabel.text = cities[indexPath.row]
         return cell
     }
 }
