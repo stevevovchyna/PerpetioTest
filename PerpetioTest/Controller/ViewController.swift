@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var picker: UIPickerView!
     
@@ -29,7 +29,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var rainLabel: UILabel!
     @IBOutlet weak var sunLabel: UILabel!
     @IBOutlet weak var afLabel: UILabel!
-
+    
+    @IBOutlet weak var infoButton: UIBarButtonItem!
+    
     var pickerData: [[String]] = [[String]]()
     var city: City?
     let blurEffectView = UIVisualEffectView()
@@ -55,7 +57,33 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    
+    @IBAction func showHint(_ sender: Any) {
+        let popoverContentController = self.storyboard?.instantiateViewController(withIdentifier: "HintViewController") as? HintViewController
+        popoverContentController?.modalPresentationStyle = .popover
+
+        if let popoverPresentationController = popoverContentController?.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .up
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.barButtonItem = infoButton
+            popoverPresentationController.delegate = self
+            if let popoverController = popoverContentController {
+                popoverController.text = city?.info ?? []
+                present(popoverController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+     
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
 }
+
 
 // MARK:- pickerView delegate methods
 extension ViewController: UIPickerViewDelegate {

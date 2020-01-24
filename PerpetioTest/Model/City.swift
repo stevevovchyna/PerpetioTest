@@ -13,6 +13,7 @@ struct City {
     let name: String
     var dates: [MonthData] = []
     var picker: [[String]] = []
+    var info: [String] = []
     
     init(data: String) {
         var stringsArray = data.components(separatedBy: "\n")
@@ -21,6 +22,7 @@ struct City {
         var months: [Int] = []
         if let end = find("Site closed", in: stringsArray) { stringsArray.remove(at: end) }
         guard let index = find("yyyy", in: stringsArray) else { return }
+        for i in 1..<index { info.append(String(stringsArray[i].filter{!"\n\t\r".contains($0)})) }
         for i in index + 2..<stringsArray.count {
             var dateEntry = stringsArray[i].components(separatedBy: " ")
             dateEntry = dateEntry.filter { $0 != "" }
