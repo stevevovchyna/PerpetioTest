@@ -51,11 +51,16 @@
                                             <constraint firstItem="qOZ-i0-1KH" firstAttribute="top" secondItem="EAZ-NJ-3MM" secondAttribute="bottom" constant="2" id="mLU-ai-OLC"/>
                                             <constraint firstItem="qOZ-i0-1KH" firstAttribute="leading" secondItem="ETT-tM-isJ" secondAttribute="leading" constant="8" id="opT-ZJ-cMh"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URy-23-cot">
                                         <rect key="frame" x="3" y="136" width="202.66666666666666" height="130"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="max t℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z48-kR-JIh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="max T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z48-kR-JIh">
                                                 <rect key="frame" x="8" y="8" width="75.666666666666671" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="23d-E3-HdT"/>
@@ -85,11 +90,16 @@
                                             <constraint firstItem="Z48-kR-JIh" firstAttribute="leading" secondItem="URy-23-cot" secondAttribute="leading" constant="8" id="SNj-CD-fVa"/>
                                             <constraint firstItem="Z48-kR-JIh" firstAttribute="top" secondItem="URy-23-cot" secondAttribute="top" constant="8" id="pdV-lt-k69"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8t-e0-vpE">
                                         <rect key="frame" x="208.66666666666663" y="136" width="202.33333333333337" height="130"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min t℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbe-dp-0aG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbe-dp-0aG">
                                                 <rect key="frame" x="8" y="8" width="75.333333333333329" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="4rJ-uJ-zGJ"/>
@@ -119,6 +129,11 @@
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Kbe-dp-0aG" secondAttribute="trailing" constant="119" id="Ome-tn-XL7"/>
                                             <constraint firstAttribute="trailing" secondItem="lkf-ra-QDF" secondAttribute="trailing" constant="8" id="lv8-3B-Vlj"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -172,6 +187,11 @@
                                             <constraint firstItem="bjn-j4-f02" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Hy1-x7-ePY" secondAttribute="leading" constant="131" id="fnc-jv-NBv"/>
                                             <constraint firstItem="f5R-aa-zRE" firstAttribute="leading" secondItem="Hy1-x7-ePY" secondAttribute="leading" constant="8" id="wiK-Ah-qMB"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMD-gL-zWf">
                                         <rect key="frame" x="208.66666666666663" y="0.0" width="202.33333333333337" height="131.66666666666666"/>
@@ -206,6 +226,11 @@
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="dUj-71-iK0" secondAttribute="trailing" constant="116" id="lsm-PF-R8m"/>
                                             <constraint firstAttribute="bottom" secondItem="77K-dg-kwT" secondAttribute="bottom" constant="8.6699999999999999" id="mME-GK-de5"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-LM-u1W">
                                         <rect key="frame" x="3" y="134.66666666666669" width="408" height="131.33333333333331"/>
@@ -240,6 +265,11 @@
                                             <constraint firstAttribute="trailing" secondItem="nHN-49-Ykb" secondAttribute="trailing" constant="8" id="tfU-0Z-bhm"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fq3-1x-HoH" secondAttribute="trailing" constant="268" id="yLY-jC-LAa"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>

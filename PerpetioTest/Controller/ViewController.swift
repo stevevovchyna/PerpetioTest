@@ -32,13 +32,13 @@ class ViewController: UIViewController {
 
     var pickerData: [[String]] = [[String]]()
     var city: City?
-    let blurEffect = UIBlurEffect(style: .regular)
     let blurEffectView = UIVisualEffectView()
   
 // MARK:- view life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
+        
         self.picker.delegate = self
         self.picker.dataSource = self
         
@@ -46,32 +46,15 @@ class ViewController: UIViewController {
         pickerData = city.picker
         
         cityNameLabel.text = city.name
-        let result = findEntry(in: city, year: pickerData[0][0], month: pickerData[1][0])
-        setLabels(with: result)
+        setLabelsToDefault(for: city)
         
-        let views: [UIView] = [cityNameView, maxTView, minTView, rainView, sunView, afView]
-        for view in views { view.layer.cornerRadius = 10 }
-        
-        blurEffectView.effect = blurEffect
-        blurEffectView.frame = blurView.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurView.addSubview(blurEffectView)
-        blurView.addSubview(infoLabel)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if self.blurEffectView.effect != nil {
-                UIView.animate(withDuration: 1) {
-                    self.blurEffectView.effect = nil
-                    self.infoLabel.removeFromSuperview()
-                }
-            }
-        }
+        blurSetUp()
+        hideHint()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
 }
 
 // MARK:- pickerView delegate methods
@@ -92,35 +75,65 @@ extension ViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        blurOff()
         guard let city = city else { return }
-        let result = findEntry(in: city,
-                               year: pickerData[0][pickerView.selectedRow(inComponent: 0)],
-                               month: pickerData[1][pickerView.selectedRow(inComponent: 1)])
-        setLabels(with: result)
-        if blurEffectView.effect != nil {
+        let year = pickerData[0][pickerView.selectedRow(inComponent: 0)]
+        let month = pickerData[1][pickerView.selectedRow(inComponent: 1)]
+        if let chosenDate = findEntry(in: city, year: year, month: month) {
+            setLabels(with: chosenDate)
+        } else {
+            presentAlert(text: "Sorry, there's no data for the set date", in: self)
+            setLabelsToDefault(for: city)
+            pickerView.selectRow(0, inComponent: 0, animated: true)
+            pickerView.selectRow(0, inComponent: 1, animated: true)
+        }
+    }
+}
+
+// MARK:- private methods
+extension ViewController {
+    private func setLabelsToDefault(for city: City) {
+        guard let chosenDate = findEntry(in: city, year: pickerData[0][0], month: pickerData[1][0]) else { return }
+        setLabels(with: chosenDate)
+    }
+    
+    private func setLabels(with data: MonthData) {
+        let month = DateFormatter().monthSymbols[Int(data.month)! - 1]
+        dateLabel.animateTextChange(with: "\(month) \(data.year)")
+        maxTLabel.animateTextChange(with: "\(data.tmax) ℃")
+        minTLabel.animateTextChange(with: "\(data.tmin) ℃")
+        rainLabel.animateTextChange(with: "\(data.rainMM) mm")
+        sunLabel.animateTextChange(with: "\(data.sunHours) hrs")
+        afLabel.animateTextChange(with: "\(data.adDays) days")
+    }
+    
+    private func findEntry(in city: City, year: String, month: String) -> MonthData? {
+        let result = city.dates.filter { $0.year == year && $0.month == month }
+        guard result.count > 0 else { return nil }
+        return result[0]
+    }
+    
+    private func blurSetUp() {
+        blurEffectView.effect = UIBlurEffect(style: .regular)
+        blurEffectView.frame = blurView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurView.addSubview(blurEffectView)
+        blurView.addSubview(infoLabel)
+    }
+    
+    private func blurOff() {
+        if self.blurEffectView.effect != nil {
             UIView.animate(withDuration: 1) {
                 self.blurEffectView.effect = nil
                 self.infoLabel.removeFromSuperview()
             }
         }
     }
-}
-
-// MARK:- private methods
-extension ViewController {    
-    func setLabels(with data: MonthData) {
-        let month = DateFormatter().monthSymbols[Int(data.month)! - 1]
-        dateLabel.animateTextChange(with: "\(month) \(data.year)")
-        maxTLabel.animateTextChange(with: data.tmax)
-        minTLabel.animateTextChange(with: data.tmin)
-        rainLabel.animateTextChange(with: data.rainMM)
-        sunLabel.animateTextChange(with: data.sunHours)
-        afLabel.animateTextChange(with: data.adDays)
-    }
     
-    func findEntry(in city: City, year: String, month: String) -> MonthData {
-        let result = city.dates.filter { $0.year == year && $0.month == month }
-        return result[0]
+    private func hideHint() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.blurOff()
+        }
     }
 }
 
