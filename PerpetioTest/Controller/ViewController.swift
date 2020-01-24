@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     let blurEffect = UIBlurEffect(style: .regular)
     let blurEffectView = UIVisualEffectView()
   
-    // MARK:- view life cycle
+// MARK:- view life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -46,6 +46,8 @@ class ViewController: UIViewController {
         pickerData = city.picker
         
         cityNameLabel.text = city.name
+        let result = findEntry(in: city, year: pickerData[0][0], month: pickerData[1][0])
+        setLabels(with: result)
         
         let views: [UIView] = [cityNameView, maxTView, minTView, rainView, sunView, afView]
         for view in views { view.layer.cornerRadius = 10 }
@@ -55,6 +57,15 @@ class ViewController: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurView.addSubview(blurEffectView)
         blurView.addSubview(infoLabel)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if self.blurEffectView.effect != nil {
+                UIView.animate(withDuration: 1) {
+                    self.blurEffectView.effect = nil
+                    self.infoLabel.removeFromSuperview()
+                }
+            }
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
