@@ -17,17 +17,11 @@ class HintViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-}
-
-extension HintViewController: UITableViewDelegate {
-    
 }
 
 extension HintViewController: UITableViewDataSource {
@@ -41,6 +35,4 @@ extension HintViewController: UITableViewDataSource {
         cell.textLabel?.numberOfLines = 0
         return cell
     }
-    
-    
 }
