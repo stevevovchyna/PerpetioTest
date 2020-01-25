@@ -16,7 +16,8 @@ class RootViewController: UIViewController {
     var cityToPass: City?
     
     let status = UIActivityIndicatorView()
-    
+
+    // MARK:- view life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "cityCell")
@@ -29,6 +30,7 @@ class RootViewController: UIViewController {
 
 }
 
+//MARK:- tableView delegate methods
 extension RootViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeTableViewAcessibility(toActive: false, forRowAt: indexPath, in: tableView, in: status)
@@ -62,6 +64,8 @@ extension RootViewController: UITableViewDelegate {
     }
 }
 
+
+//MARK:- tableView data source methods
 extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
@@ -72,7 +76,10 @@ extension RootViewController: UITableViewDataSource {
         cell.cityLabel.text = cities[indexPath.row]
         return cell
     }
-    
+}
+
+//MARK:- private methods
+extension RootViewController {
     private func addStatusLabel() {
         status.frame = CGRect(x: (view.frame.size.width - 75) / 2, y:  (view.frame.size.height - 75) / 2, width: 75, height: 75)
         status.backgroundColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 0.3102793237)
